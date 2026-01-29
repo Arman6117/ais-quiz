@@ -5,6 +5,7 @@
 
 @theme inline {
   --color-deep-background:#020617;
+  --color-dark-background:#09090b;
   --color-sidebar-background:#0f0f1c;
   --color-card-background:#0F172A;
   --color-border:	#1E293B;
@@ -124,9 +125,9 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply ;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply  text-white;
   }
 }
