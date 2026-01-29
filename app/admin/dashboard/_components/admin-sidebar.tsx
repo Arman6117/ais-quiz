@@ -1,25 +1,21 @@
 "use client";
+
 import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-import { CirclePlus, FileQuestion, Home } from "lucide-react";
+  ChartCandlestickIcon,
+  FileQuestion,
+  LayoutGridIcon,
+  Menu,
+  X,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const items = [
   {
     title: "Dashboard",
     url: "/admin/dashboard",
-    icon: Home,
+    icon: LayoutGridIcon,
   },
   {
     title: "My Quizzes",
@@ -27,25 +23,79 @@ const items = [
     icon: FileQuestion,
   },
   {
-    title: "Create New",
+    title: "Mock Interviews",
     url: "#",
-    icon: CirclePlus,
+    icon: ChartCandlestickIcon,
   },
 ];
-const AdminSidebar = () => {
+
+export default function AdminSidebar() {
   const pathName = usePathname();
-  const currPage = pathName.split("/")[2];
+  const [open, setOpen] = useState(false);
 
   return (
     <>
-      <aside className="bg-[#0F0F1C] text-slate-300 backdrop-blur-md border-r border-[#1f1f2e] w-40 min-h-screen  p-4 py-6">
+      <div className="md:hidden fixed flex items-center justify-between px-4 py-3 bg-[#0F0F1C] border-b border-[#1f1f2e]">
+        <span className="text-white font-semibold">AIS LOGO</span>
+        <button onClick={() => setOpen(true)}>
+          <Menu className="text-white" />
+        </button>
+      </div>
 
-       <h1>
-        AIS LOGO
-       </h1>
+      {open && (
+        <div
+          className="fixed inset-0 bg-black/60 z-40 md:hidden"
+          onClick={() => setOpen(false)}
+        />
+      )}
+
+      <aside
+        className={`
+          fixed z-50 top-0 left-0
+          h-screen w-64
+          bg-[#0F0F1C] text-slate-300 backdrop-blur-md
+          border-r border-[#1f1f2e]
+          p-4 py-6
+          transform transition-transform duration-300
+          ${open ? "translate-x-0" : "-translate-x-full"}
+          md:translate-x-0 md:static
+        `}
+      >
+        <div className="flex items-center justify-between">
+          <h1 className="text-white font-semibold">AIS LOGO</h1>
+          <button className="md:hidden" onClick={() => setOpen(false)}>
+            <X className="text-white" />
+          </button>
+        </div>
+
+        <div className="flex flex-col mt-6 gap-3">
+          {items.map((item) => {
+            const active = pathName === item.url;
+            const Icon = item.icon;
+
+            return (
+              <Link href={item.url} key={item.title} onClick={() => setOpen(false)}>
+                <div
+                  className={`
+                    flex group gap-2 items-center px-4 py-2 rounded-md
+                    transition-all cursor-pointer
+                    ${
+                      active
+                        ? "bg-blue-600/10 text-blue-400 border border-blue-500/30"
+                        : "border border-transparent hover:bg-[#2323EB]/10 hover:border-[#2323EB]"
+                    }
+                  `}
+                >
+                  <Icon className="w-5 h-5 group-hover:text-[#2323EB]" />
+                  <span className="text-sm font-semibold group-hover:text-[#2323EB]">
+                    {item.title}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </aside>
     </>
   );
-};
-
-export default AdminSidebar;
+}
