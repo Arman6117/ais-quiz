@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} antialiased flex gap2 overflow-hidden bg-dark-background`}
+        className={`${inter.variable} antialiased flex gap2  bg-dark-background`}
       >
         <AdminSidebar />
         {children}
