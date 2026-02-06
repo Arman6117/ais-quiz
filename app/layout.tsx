@@ -25,7 +25,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased flex gap2  bg-dark-background`}
       >
-        <AdminSidebar />
+        {/* <AdminSidebar /> */}
         {children}
       </body>
     </html>

@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import AdminDashboardCards from "./_components/admin-dashboard-cards";
 import AdminDashboardRecentActivity from "./_components/admin-dashboard-recent-activity";
 import AdminDashboardLeaderBoard from "./_components/admin-dashboard-leaderboard";
+import AdminQuizCards from "./_components/admin-quiz-cards";
 
 const AdminDashboardPage = () => {
   return (
@@ -16,9 +17,12 @@ const AdminDashboardPage = () => {
       <section className="px-9 py-3 mt-3">
         <AdminDashboardCards />
       </section>
-      <section className="px-9 flex md:flex-row flex-col  justify-between max-w-full py-3 mt-3">
+      <section className="px-9 flex md:flex-row flex-col items-center gap-6  justify-between max-w-full py-3 mt-3">
         <AdminDashboardRecentActivity />
         <AdminDashboardLeaderBoard />
+      </section>
+      <section className="px-9 mt-5">
+        <AdminQuizCards/>
       </section>
     </main>
   );
