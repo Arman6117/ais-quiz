@@ -35,7 +35,7 @@ export default function AdminSidebar() {
 
   return (
     <>
-      <div className="md:hidden fixed flex items-center justify-between px-4 py-3 bg-[#0F0F1C] border-b border-[#1f1f2e]">
+      <div className="md:hidden w-full fixed flex items-center justify-between px-4 py-3 bg-[#0F0F1C] border-b border-[#1f1f2e]">
         <span className="text-white font-semibold">AIS LOGO</span>
         <button onClick={() => setOpen(true)}>
           <Menu className="text-white" />

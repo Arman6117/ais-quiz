@@ -70,7 +70,7 @@ const recentActivity = [
 
 const AdminDashboardRecentActivity = () => {
   return (
-    <Card className="w-full max-w-lg overflow-hidden flex flex-col h-[450px]">
+    <Card className="w-xl max-w-xl overflow-hidden flex flex-col h-[450px]">
       <div className="flex w-full justify-between items-center p-6 pb-2">
         <h1 className="text-lg font-semibold">Recent Activity</h1>
         

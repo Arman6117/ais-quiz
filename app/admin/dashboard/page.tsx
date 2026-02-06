@@ -16,7 +16,7 @@ const AdminDashboardPage = () => {
       <section className="px-9 py-3 mt-3">
         <AdminDashboardCards />
       </section>
-      <section className="px-9 flex justify-between max-w-full py-3 mt-3">
+      <section className="px-9 flex md:flex-row flex-col  justify-between max-w-full py-3 mt-3">
         <AdminDashboardRecentActivity />
         <AdminDashboardLeaderBoard />
       </section>
