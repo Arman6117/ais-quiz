@@ -30,10 +30,11 @@ const AdminQuizCards = () => {
           Manage All
         </Button>
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 md:flex-row flex-col">
         {mock.map((item, index) => (
-          <div
-            className="border-[#29292D] border p-2 flex flex-col gap-3 mt-5 h-40 rounded-md w-56 bg-[#111113]"
+          <Link
+            href={`/admin/my-quizzes/${item.name.toLowerCase()}`}
+            className="border-[#29292D] border p-2 flex flex-col gap-3 mt-5 h-48 md:h-40 rounded-md md:w-56 bg-[#111113]"
             key={index}
           >
             <div className="relative h-24 w-full">
@@ -47,13 +48,16 @@ const AdminQuizCards = () => {
               <div className="h-full rounded-md w-full bg-indigo-900"></div>
             </div>
             <div className="flex flex-col gap">
-              <span className="font-semibold">{item.name}</span>
+              <span className="font-semibold md:text-base text-xl">{item.name}</span>
               <span className="text-xs text-gray-500">{item.updated}</span>
             </div>
-          </div>
+          </Link>
         ))}
-        <div className="border-[#29292D] flex flex-col items-center justify-center border rounded-md  border-dashed mt-5 h-40 w-56 bg-[#18181B]">
-          <Link href={"/admin/my-quizzes/create-new"} className="flex flex-col items-center gap-2">
+        <div className="border-[#29292D] flex flex-col items-center justify-center border rounded-md  border-dashed mt-5 h-48 md:h-40 md:w-56 bg-[#18181B]">
+          <Link
+            href={"/admin/my-quizzes/create-new"}
+            className="flex flex-col items-center gap-2"
+          >
             <PlusCircle className="size-10 text-[#677790]" />
             <span className="text-lg font-semibold text-[#677790]">
               Create New

@@ -19,9 +19,9 @@ const leaderboardData = [
 
 const AdminDashboardLeaderBoard = () => {
   return (
-    <Card className="flex flex-col h-[450px]  max-w-lg border-none shadow-xl overflow-hidden relative">
+    <Card className="flex flex-col h-[450px] w-full md:w-auto md:max-w-lg border-none shadow-xl overflow-hidden relative z-0">
       
-      <div className="absolute inset-0 bg-linear-to-br from-[#0C0C21] via-[#0D0D2D] to-[#0C0C21] z-0" />
+      <div className="absolute inset-0 bg-linear-to-br from-[#0C0C21] via-[#0D0D2D] to-[#0C0C21] " />
       
       <div className="relative z-10 flex flex-col h-full p- pb-2">
         
