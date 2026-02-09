@@ -3,8 +3,18 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { BarChart2, Clock, HelpCircle, MoreHorizontal, Pencil } from 'lucide-react';
+import MoreDropDownMenu from './more-dropdown-menu';
 
-const QuizCard = ({ quiz }: { quiz: any }) => {
+
+interface QuizCardProps {
+    id:number,
+    name:string,
+    status:string,
+    totalQuestions:number,
+    duration:string,
+    participants:number
+}
+const QuizCard = ({ quiz }: { quiz: QuizCardProps }) => {
     const isDraft = quiz.status === "draft";
     const isPublished = quiz.status === "published";
   
@@ -22,9 +32,7 @@ const QuizCard = ({ quiz }: { quiz: any }) => {
           >
             {quiz.status}
           </Badge>
-          <button className="text-slate-500 hover:text-white transition-colors">
-            <MoreHorizontal className="size-5" />
-          </button>
+         <MoreDropDownMenu/>
         </div>
   
         <h3 className="text-base font-bold text-white mb-2 leading-tight group-hover:text-blue-400 transition-colors">

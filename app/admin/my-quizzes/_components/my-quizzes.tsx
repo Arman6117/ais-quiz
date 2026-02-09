@@ -30,7 +30,7 @@ const MyQuizzes = () => {
       
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-           <h1 className="text-2xl font-bold text-white tracking-tight">My Quizzes</h1>
+           <h1 className="text-4xl font-bold text-white tracking-tight">My Quizzes</h1>
         </div>
       </div>
 
