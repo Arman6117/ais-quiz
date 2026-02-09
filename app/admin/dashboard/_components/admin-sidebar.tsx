@@ -19,7 +19,7 @@ const items = [
   },
   {
     title: "My Quizzes",
-    url: "#",
+    url: "/admin/my-quizzes",
     icon: FileQuestion,
   },
   {

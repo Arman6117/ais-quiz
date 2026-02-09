@@ -6,7 +6,7 @@ import AdminQuizCards from "./_components/admin-quiz-cards";
 
 const AdminDashboardPage = () => {
   return (
-    <main className=" py-5 w-full overflow-y-auto h-screen">
+    <main className=" py-5 w-screen overflow-y-auto h-screen">
       <header>
         <span>Search and other</span>
       </header>
