@@ -35,7 +35,7 @@ export default function AdminSidebar() {
 
   return (
     <>
-      <div className="md:hidden w-full fixed flex items-center justify-between px-4 py-3 bg-[#0F0F1C] border-b border-[#1f1f2e]">
+      <div className="md:hidden w-full fixed flex items-center justify-between px-4 py-3 bg-deep-background border-b border-slate-400">
         <span className="text-white font-semibold">AIS LOGO</span>
         <button onClick={() => setOpen(true)}>
           <Menu className="text-white" />
@@ -44,7 +44,7 @@ export default function AdminSidebar() {
 
       {open && (
         <div
-          className="fixed inset-0 bg-black/60 z-40 md:hidden"
+          className="fixed inset-0 bg z-40 md:hidden"
           onClick={() => setOpen(false)}
         />
       )}
@@ -53,8 +53,8 @@ export default function AdminSidebar() {
         className={`
           fixed z-50 top-0 left-0
           h-screen w-64
-          bg-[#0F0F1C] text-slate-300 backdrop-blur-md
-          border-r border-[#29292D]
+           text-slate-300 
+          border-r border-gray-700
           p-4 py-6
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}

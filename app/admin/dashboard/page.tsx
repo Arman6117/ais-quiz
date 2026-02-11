@@ -7,10 +7,11 @@ import AdminQuizCards from "./_components/admin-quiz-cards";
 const AdminDashboardPage = () => {
   return (
     <main className=" py-5 w-screen overflow-y-auto h-screen">
-      <header>
+    
+      <header  className="fixed top-0 flex flex-col gap-6 z-10  w-full bg-dark-background justify-between">
         <span>Search and other</span>
+      <Separator className="bg-gray-800" />
       </header>
-      <Separator className="bg-[#1f1f2e]" />
       <section className="px-9 py-3 mt-3">
         <h1 className="text-3xl font-bold">Admin Dashboard Overview</h1>
       </section>
