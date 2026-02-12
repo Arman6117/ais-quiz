@@ -52,9 +52,10 @@ export default function AdminSidebar() {
       <aside
         className={`
           fixed z-50 top-0 left-0
-          h-screen w-64
+          h-screen w-56
            text-slate-300 
-          border-r border-gray-700
+           bg-deep-background
+          border-r border-[#1f1f2e]
           p-4 py-6
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
@@ -70,7 +71,7 @@ export default function AdminSidebar() {
 
         <div className="flex flex-col mt-6 gap-3">
           {items.map((item) => {
-            const active = pathName === item.url;
+            const active = pathName.includes(item.url);
             const Icon = item.icon;
 
             return (

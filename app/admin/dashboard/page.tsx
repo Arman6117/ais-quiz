@@ -3,15 +3,14 @@ import AdminDashboardCards from "./_components/admin-dashboard-cards";
 import AdminDashboardRecentActivity from "./_components/admin-dashboard-recent-activity";
 import AdminDashboardLeaderBoard from "./_components/admin-dashboard-leaderboard";
 import AdminQuizCards from "./_components/admin-quiz-cards";
+import PageHeader from "@/components/header";
 
 const AdminDashboardPage = () => {
   return (
-    <main className=" py-5 w-screen overflow-y-auto h-screen">
-    
-      <header  className="fixed top-0 flex flex-col gap-6 z-10  w-full bg-dark-background justify-between">
+    <main className=" pb-5 w-screen overflow-y-auto h-screen">
+      <PageHeader>
         <span>Search and other</span>
-      <Separator className="bg-gray-800" />
-      </header>
+      </PageHeader>
       <section className="px-9 py-3 mt-3">
         <h1 className="text-3xl font-bold">Admin Dashboard Overview</h1>
       </section>
@@ -23,7 +22,7 @@ const AdminDashboardPage = () => {
         <AdminDashboardLeaderBoard />
       </section>
       <section className="px-9 mt-5">
-        <AdminQuizCards/>
+        <AdminQuizCards />
       </section>
     </main>
   );

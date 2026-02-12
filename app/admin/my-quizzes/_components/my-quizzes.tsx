@@ -62,7 +62,7 @@ const MyQuizzes = () => {
 
         {["all", "published", "draft", "archived"].map((filterStatus) => (
           <TabsContent key={filterStatus} value={filterStatus} className="mt-0 outline-none">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  lg:gap-16 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  lg:gap-16 gap-">
               {mockQuizzes
                 .filter((quiz) => filterStatus === "all" || quiz.status === filterStatus)
                 .map((quiz) => (

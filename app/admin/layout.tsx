@@ -5,7 +5,7 @@ export default function AdminLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main className="flex overflow-hidden">
+  return <main className="flex w-full min-h-screen overflow-hidden">
     <AdminSidebar/>
     {children}
   </main>;
