@@ -10,7 +10,7 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Layers, Type, Sparkles, BookOpen } from "lucide-react";
+import { Layers, Type, Sparkles } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 const ConfigurationPanel = () => {
@@ -19,9 +19,8 @@ const ConfigurationPanel = () => {
   const [complexity, setComplexity] = useState<"intro" | "pro" | "expert">("pro");
 
   return (
-    <div className="h-fit border-r border-white/10 w-[320px] bg-[#0A0A0A] flex flex-col">
+    <div className="h-fit border-r  border-deep-border w-[320px] bg-[#0A0A0A] flex flex-col">
       
-      {/* Header */}
       <div className="p-6 pb-4">
         <h2 className="text-xl font-bold text-white mb-1">Configuration</h2>
         <p className="text-sm text-slate-400 leading-relaxed">
@@ -31,10 +30,8 @@ const ConfigurationPanel = () => {
 
       <Separator className="bg-white/5" />
 
-      {/* Form Area */}
       <div className="flex-1 overflow-y-auto p-6 space-y-8">
         
-        {/* 1. Course & Module Selection */}
         <div className="space-y-5">
           <div className="space-y-3">
             <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -69,7 +66,6 @@ const ConfigurationPanel = () => {
           </div>
         </div>
 
-        {/* 2. Number of Questions */}
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -92,7 +88,6 @@ const ConfigurationPanel = () => {
           </div>
         </div>
 
-        {/* 3. Question Type */}
         <div className="space-y-3">
           <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
             Question Type
@@ -123,7 +118,6 @@ const ConfigurationPanel = () => {
           </div>
         </div>
 
-        {/* 4. Complexity Level */}
         <div className="space-y-3">
           <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
             Complexity
@@ -146,9 +140,8 @@ const ConfigurationPanel = () => {
         </div>
       </div>
 
-      {/* Footer / Generate Button */}
       <div className="p-6 border-t border-white/5 bg-[#0A0A0A]">
-        <Button className="w-full h-11 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-900/20 transition-all">
+        <Button className="w-full h-11 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-900/20 transition-all">
           <Sparkles className="mr-2 size-4 fill-white/20" />
           Generate with AI
         </Button>

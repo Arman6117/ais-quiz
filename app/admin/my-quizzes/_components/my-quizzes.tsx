@@ -1,21 +1,17 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { 
-  Plus,
-  Filter,
-
-} from "lucide-react";
+import { Plus, Filter } from "lucide-react";
 import QuizCard from "./quiz-card";
 
+// Fix 1: Removed min-h constraint and ensured h-full so it matches QuizCard height
 const CreateNewCard = () => (
-  <button className="flex flex-col items-center justify-center p-6 border border-dashed border-white/20 rounded-xl h-full min-h-[200px] hover:bg-white/5 hover:border-blue-500/50 transition-all group cursor-pointer bg-transparent">
+  <button className="flex flex-col items-center justify-center p-6 border border-dashed border-white/20 rounded-xl w-full h-full min-h-[250px] hover:bg-white/5 hover:border-blue-500/50 transition-all group cursor-pointer bg-transparent">
     <div className="size-12 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white transition-all">
       <Plus className="size-6" />
     </div>
     <span className="text-sm font-medium text-slate-400 group-hover:text-white">Create another quiz</span>
   </button>
 );
-
 
 const mockQuizzes = [
   { id: 1, name: "Advanced React Hooks Masterclass", status: "published", totalQuestions: 25, duration: "45", participants: 12 },
@@ -34,10 +30,9 @@ const MyQuizzes = () => {
         </div>
       </div>
 
-  
       <Tabs defaultValue="all" className="w-full space-y-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/5 pb-0">
-          <TabsList className="bg-transparent h-auto p-0 gap-8 justify-start w-full sm:w-auto  transition-all  no-scrollbar">
+          <TabsList className="bg-transparent h-auto p-0 gap-8 justify-start w-full sm:w-auto transition-all ">
             {["All Quizzes", "Published", "Drafts", "Archived"].map((tab) => {
               const value = tab.toLowerCase().split(" ")[0];
               const safeValue = value === "all" ? "all" : value.slice(0, -1) === "archived" ? "archived" : value === "drafts" ? "draft" : value;
@@ -45,7 +40,7 @@ const MyQuizzes = () => {
                 <TabsTrigger
                   key={safeValue}
                   value={safeValue}
-                  className="rounded-none bg-transparent border-b-2 border-x-0 border-t-0 border-transparent px-0 py-3 text-sm font-medium text-slate-400 hover:text-slate-200 data-[state=active]:border-blue-500 data-[state=active]:text-white data-[state=active]:bg-transparent transition-all"
+                  className="rounded-none bg-transparent border-b-2 border-x-0 border-t-0 border-transparent px-0 py-3 text-sm font-medium text-slate-400 hover:text-slate-200 data-[state=active]:border-blue-500 data-[state=active]:text-white data-[state=active]:bg-transparent transition-all whitespace-nowrap"
                 >
                   {tab}
                 </TabsTrigger>
@@ -62,14 +57,23 @@ const MyQuizzes = () => {
 
         {["all", "published", "draft", "archived"].map((filterStatus) => (
           <TabsContent key={filterStatus} value={filterStatus} className="mt-0 outline-none">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  lg:gap-16 gap-">
+            {/* Fix 2: Changed grid-cols breakpoints and fixed the gap issue */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {mockQuizzes
                 .filter((quiz) => filterStatus === "all" || quiz.status === filterStatus)
                 .map((quiz) => (
-                  <QuizCard  key={quiz.id} quiz={quiz} />
+                  // Fix 3: Ensure QuizCard takes full height of the grid cell
+                  <div key={quiz.id} className="h-full">
+                    <QuizCard quiz={quiz} />
+                  </div>
                 ))}
               
-              {(filterStatus === "all" || filterStatus === "draft") && <CreateNewCard />}
+              {/* Conditional rendering for the 'Create New' card */}
+              {(filterStatus === "all" || filterStatus === "draft") && (
+                <div className="h-full">
+                  <CreateNewCard />
+                </div>
+              )}
             </div>
           </TabsContent>
         ))}

@@ -54,8 +54,8 @@ export default function AdminSidebar() {
           fixed z-50 top-0 left-0
           h-screen w-56
            text-slate-300 
-           bg-deep-background
-          border-r border-[#1f1f2e]
+           bg-dark-background
+          border-r border-deep-border
           p-4 py-6
           transform transition-transform duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
