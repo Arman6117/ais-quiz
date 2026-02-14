@@ -2,6 +2,8 @@ import PageHeader from '@/components/header'
 import { Button } from '@/components/ui/button'
 import React from 'react'
 import ConfigurationPanel from './_components/configuration-panel'
+import QuizQuestionPanel from './_components/quiz-question-panel'
+import QuizCreator from './_components/quiz-creator'
 
 const CreateQuizPage = () => {
   return (
@@ -11,7 +13,7 @@ const CreateQuizPage = () => {
         <Button>Save Draft</Button>
       </PageHeader>
       <section className='flex h-full'>
-        <ConfigurationPanel/>
+       <QuizCreator/>
       </section>
     </main>
   )

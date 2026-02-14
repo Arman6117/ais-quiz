@@ -1,30 +1,24 @@
 "use client";
-import React, { useState } from "react";
 import { 
-  Select, 
-  SelectContent, 
-  SelectItem, 
-  SelectTrigger, 
-  SelectValue 
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue 
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Layers, Type, Sparkles } from "lucide-react";
+import { Layers, Type, Sparkles, Loader2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { useQuizStore } from "@/hooks/use-quiz-store";
 
 const ConfigurationPanel = () => {
-  const [questionCount, setQuestionCount] = useState([10]);
-  const [questionType, setQuestionType] = useState<"mcq" | "typing">("mcq");
-  const [complexity, setComplexity] = useState<"intro" | "pro" | "expert">("pro");
+  const { config, setConfig, generateQuestions, isGenerating } = useQuizStore();
 
   return (
-    <div className="h-fit border-r  border-deep-border w-[320px] bg-[#0A0A0A] flex flex-col">
+    <div className="h-full border-r border-white/10 w-[320px] bg-[#0A0A0A] flex flex-col shrink-0">
       
       <div className="p-6 pb-4">
         <h2 className="text-xl font-bold text-white mb-1">Configuration</h2>
         <p className="text-sm text-slate-400 leading-relaxed">
-          Define the parameters for your AI-generated assessment.
+          Define parameters for AI assessment.
         </p>
       </div>
 
@@ -34,10 +28,8 @@ const ConfigurationPanel = () => {
         
         <div className="space-y-5">
           <div className="space-y-3">
-            <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Target Course
-            </Label>
-            <Select>
+            <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Target Course</Label>
+            <Select onValueChange={(v) => setConfig('course', v)} value={config.course}>
               <SelectTrigger className="w-full bg-[#111111] border-white/10 text-slate-300 h-10">
                 <SelectValue placeholder="Select a course..." />
               </SelectTrigger>
@@ -50,17 +42,15 @@ const ConfigurationPanel = () => {
           </div>
 
           <div className="space-y-3">
-            <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Course Module
-            </Label>
-            <Select>
+            <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Module</Label>
+            <Select onValueChange={(v) => setConfig('module', v)} value={config.module}>
               <SelectTrigger className="w-full bg-[#111111] border-white/10 text-slate-300 h-10">
                 <SelectValue placeholder="Select a module..." />
               </SelectTrigger>
               <SelectContent className="bg-[#111111] border-white/10 text-slate-300">
                 <SelectItem value="hooks">React Hooks Deep Dive</SelectItem>
-                <SelectItem value="context">Context API & State</SelectItem>
-                <SelectItem value="patterns">Advanced Patterns</SelectItem>
+                <SelectItem value="security">Web Security 101</SelectItem>
+                <SelectItem value="db">Database Indexing</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -68,82 +58,54 @@ const ConfigurationPanel = () => {
 
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              Question Count
-            </Label>
+            <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Question Count</Label>
             <span className="text-xs font-mono bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-500/20">
-              {questionCount[0]}
+              {config.count}
             </span>
           </div>
           <Slider
-            value={questionCount}
-            onValueChange={setQuestionCount}
-            max={50}
-            step={1}
+            value={[config.count]}
+            onValueChange={(v) => setConfig('count', v[0])}
+            max={30} step={1} min={1}
             className="py-4"
           />
-          <div className="flex justify-between text-[10px] text-slate-600 font-medium uppercase px-1">
-            <span>5 Qs</span>
-            <span>50 Qs</span>
-          </div>
         </div>
 
         <div className="space-y-3">
-          <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-            Question Type
-          </Label>
+          <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Type</Label>
           <div className="grid grid-cols-2 gap-3">
             <button
-              onClick={() => setQuestionType("mcq")}
+              onClick={() => setConfig('type', 'mcq')}
               className={`flex items-center justify-center gap-2 p-3 rounded-lg border text-sm font-medium transition-all ${
-                questionType === "mcq"
+                config.type === "mcq"
                   ? "bg-blue-600/10 border-blue-500/50 text-blue-400"
-                  : "bg-[#111111] border-white/5 text-slate-400 hover:bg-white/5 hover:border-white/10"
+                  : "bg-[#111111] border-white/5 text-slate-400 hover:bg-white/5"
               }`}
             >
-              <Layers className="size-4" />
-              MCQ
+              <Layers className="size-4" /> MCQ
             </button>
             <button
-              onClick={() => setQuestionType("typing")}
+              onClick={() => setConfig('type', 'descriptive')}
               className={`flex items-center justify-center gap-2 p-3 rounded-lg border text-sm font-medium transition-all ${
-                questionType === "typing"
+                config.type === "descriptive"
                   ? "bg-blue-600/10 border-blue-500/50 text-blue-400"
-                  : "bg-[#111111] border-white/5 text-slate-400 hover:bg-white/5 hover:border-white/10"
+                  : "bg-[#111111] border-white/5 text-slate-400 hover:bg-white/5"
               }`}
             >
-              <Type className="size-4" />
-              Descriptive
+              <Type className="size-4" /> Descriptive
             </button>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <Label className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-            Complexity
-          </Label>
-          <div className="flex flex-wrap gap-2">
-            {["intro", "pro", "expert"].map((level) => (
-              <button
-                key={level}
-                onClick={() => setComplexity(level as any)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all capitalize ${
-                  complexity === level
-                    ? "bg-white text-black border-white"
-                    : "bg-transparent text-slate-500 border-slate-800 hover:border-slate-600 hover:text-slate-300"
-                }`}
-              >
-                {level === "intro" ? "Introductory" : level === "pro" ? "Professional" : "Expert"}
-              </button>
-            ))}
           </div>
         </div>
       </div>
 
       <div className="p-6 border-t border-white/5 bg-[#0A0A0A]">
-        <Button className="w-full h-11 bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-900/20 transition-all">
-          <Sparkles className="mr-2 size-4 fill-white/20" />
-          Generate with AI
+        <Button 
+          onClick={generateQuestions}
+          disabled={isGenerating || !config.course}
+          className="w-full h-11 bg-blue-600 hover:bg-blue-500 text-white font-semibold shadow-lg shadow-blue-900/20 transition-all"
+        >
+          {isGenerating ? <Loader2 className="mr-2 size-4 animate-spin" /> : <Sparkles className="mr-2 size-4" />}
+          {isGenerating ? "Generating..." : "Generate with AI"}
         </Button>
       </div>
     </div>
