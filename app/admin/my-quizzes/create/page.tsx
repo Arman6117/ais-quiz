@@ -1,13 +1,10 @@
 import PageHeader from '@/components/header'
 import { Button } from '@/components/ui/button'
-import React from 'react'
-import ConfigurationPanel from './_components/configuration-panel'
-import QuizQuestionPanel from './_components/quiz-question-panel'
 import QuizCreator from './_components/quiz-creator'
 
 const CreateQuizPage = () => {
   return (
-    <main className='pb-5 w-screen overflow-y-scroll h-screen'>
+    <main className=' w-screen overflow-y- h-'>
       <PageHeader>
         <span>My Quizzes/Create</span>
         <Button>Save Draft</Button>
