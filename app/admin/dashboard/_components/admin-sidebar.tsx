@@ -24,7 +24,7 @@ const items = [
   },
   {
     title: "Mock Interviews",
-    url: "#",
+    url: "/admin/mock-interview",
     icon: ChartCandlestickIcon,
   },
 ];
