@@ -6,7 +6,7 @@ import PageHeader from "@/components/header";
 
 const MyQuizzesPage = () => {
   return (
-    <main className="w-full h-screen overflow-y-auto relative bg-dark-background">
+    <main className="w-full flex-1 h-screen overflow-y-auto relative bg-dark-background">
       <PageHeader>
         <span className="text-xl font-bold">Search and other</span>
 

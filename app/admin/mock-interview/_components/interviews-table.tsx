@@ -20,7 +20,6 @@ import {
 import { MoreHorizontal, Edit2, Trash2, Eye } from "lucide-react";
 import { DifficultyIndicator } from "./difficulty-indicator";
 
-// Define the shape of our data
 export interface MockInterviewTemplate {
   id: string;
   title: string;

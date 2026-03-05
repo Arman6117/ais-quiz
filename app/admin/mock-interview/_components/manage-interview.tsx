@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
+import  { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Plus, Search, Code2, Database, UserSquare2, Briefcase } from "lucide-react";
+import {  Search, Code2, Database, UserSquare2, Briefcase } from "lucide-react";
 import { InterviewsTable, MockInterviewTemplate } from "./interviews-table";
 
 // Mock Data (In production, this would be passed in via props or fetched from your MERN backend)
@@ -34,7 +33,6 @@ export const ManageInterviews = () => {
   return (
     <div className="w-full max-w-[1400px] mx-auto p-6 flex flex-col space-y-8">
       
-      {/* Header Section */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Manage Mock Interviews</h1>
@@ -43,7 +41,6 @@ export const ManageInterviews = () => {
        
       </div>
 
-      {/* Controls Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full md:w-auto">
           <TabsList className="bg-[#111111] border border-white/10 p-1 h-auto rounded-lg">
@@ -70,7 +67,6 @@ export const ManageInterviews = () => {
         </div>
       </div>
 
-      {/* Modular Table Component */}
       <InterviewsTable data={filteredInterviews} totalCount={mockData.length} />
 
     </div>
